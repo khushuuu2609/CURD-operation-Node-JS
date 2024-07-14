@@ -11,11 +11,12 @@ export const readLibrary = () => {
 };
 
 export const writeLibrary = (fileData) => {
-    try{
-        fs.writeFileSync(path.resolve("library.json"),data);
+    const data = JSON.stringify(fileData);
+    try {
+        fs.writeFileSync(path.resolve("library.json"), data);
         return true;
-    }catch(e){
-        throw new Error("Unable to write library")
+    } catch (err) {
+        throw new Error("Unable to write library");
     }
 };
 
