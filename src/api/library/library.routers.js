@@ -1,6 +1,6 @@
 import express from "express";
 import {addBook,
-        deleteBooks,
+        deleteBook,
         getAllBooks,
         getBook,
         updateBook} from "./library.controllers.js";
@@ -12,7 +12,7 @@ libraryRoute.get("/", getAllBooks);
 libraryRoute.post("/", addBook);
 libraryRoute.get("/:id", getBook);
 libraryRoute.patch("/:id", updateBook);
-libraryRoute.delete("/:id", deleteBooks);
+libraryRoute.delete("/:id", deleteBook);
 
 
 export default libraryRoute;

@@ -1,9 +1,8 @@
-import express from "express";
-import { HttpError } from "../ts/class/httpError.js";
+ import { HttpError } from "../ts/class/httpError.js";
 
-export const errorHandler = async (err, req, res, next) => {
-    const status = err.status || 500;
+const errorHandler = async (err, req, res, next) => {
     const message = err.message || "Internal Server Error";
+    const status = err.status || 500;
 
     if (err.name === "ValidationError") {
         return res.status(400).json({ status: "Validation error", message });
@@ -16,4 +15,4 @@ export const errorHandler = async (err, req, res, next) => {
     res.status(status).json({ status: "error", message });
 };
 
-module.exports = errorHandler;
+export default errorHandler;

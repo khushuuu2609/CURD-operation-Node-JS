@@ -1,5 +1,4 @@
-import { bookValidationSchema } from "./library.validation.js";
-import { deleteBook, getBookId } from "./library.dao.js";
+import { deleteBookDAO, getBookId } from "./library.dao.js";
 import libraryService from "./library.services.js"
 
 
@@ -51,18 +50,15 @@ export const updateBook = async (req,res,next) => {
                 }
     }; 
 
-export const deleteBooks = async(req,res,next) => {
-    try{
-        const result = await libraryService.deleteBook(req);
-        res.status(200).json({status:"SUCCESS",
-            message:"Book deleted sucessfully",
-            ...result,
-            });
-    }catch(error){
+export const deleteBook = async(req,res,next) => {
+    try {
+        deleteBookDAO(parseInt(req.params.id));
+        res.status(200).json({
+            status: "SUCCESS",
+            message: "Book deleted successfully",
+        });
+    } catch (error) {
         next(error);
     }
 };
 
-module.exports = {
-    getAllBooks,addBook,getBook,updateBook,deleteBooks
-};

@@ -1,9 +1,8 @@
-import express from "express";
-import { readLibrary } from "../../services/libraryFile.js";
-import { bookValidationSchema } from "./library.validation.js";
+import { readLibrary } from "../../service/libraryFile.js";
+import bookValidationSchema from "./library.validation.js";
 import { insertBook, updateBookDAO } from "./library.dao.js";
 
-export const getAllBooks = async(req) => {
+ const getAllBooks = async(req) => {
     try{
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;
@@ -28,7 +27,7 @@ export const getAllBooks = async(req) => {
     }
 };
 
-export const addBook = async (req) => {
+const addBook = async (req) => {
     try{
         const book = req.body;
         await bookValidationSchema.validate(book);
@@ -41,7 +40,7 @@ export const addBook = async (req) => {
     }
 };
 
-export const updateBook = async (req) => {
+const updateBook = async (req) => {
     try{
         const id = parseInt(req.params.id);
         const book = req.body;
@@ -53,4 +52,4 @@ export const updateBook = async (req) => {
     }
 };
 
-module.exports = {getAllBooks,addBook,updateBook}
+export default { getAllBooks, addBook, updateBook };

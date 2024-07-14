@@ -4,5 +4,3 @@ export class HttpError extends Error{
         this.status = status;
     }
 }
-
-module.exports = HttpError;

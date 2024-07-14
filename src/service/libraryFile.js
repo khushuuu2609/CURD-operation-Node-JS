@@ -19,7 +19,3 @@ export const writeLibrary = (fileData) => {
     }
 };
 
-module.exports = {
-    readLibrary,
-    writeLibrary
-};

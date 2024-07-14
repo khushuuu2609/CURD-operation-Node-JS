@@ -20,7 +20,7 @@ const bookValidationSchema = yup.object().shape({
     type:yup.array()
     .min(1,"Book must belong to at least one type")
     .required("Type is required.")
-    .of(yup.string().oneof(["Adventure","Horror","Comic","Nonfiction","Invalid book type"])
+    .of(yup.string().oneOf(["Adventure","Horror","Comic","Nonfiction","Invalid book type"])
     )
     .typeError("Invalid type of book"),
 
@@ -33,4 +33,4 @@ const bookValidationSchema = yup.object().shape({
 })
 .strict();
 
-module.exports = {bookValidationSchema};
+export default bookValidationSchema;
